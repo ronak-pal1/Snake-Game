@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<head>
+    <title>SNAKE GAME</title>
+    <style>
+        body{
+            padding: 0px;
+            margin : 0px;
+            background-color: rgb(255, 55, 0);
+        }
+
+        .container{
+            width: 730px;
+            height: 730px;
+            background-color: beige;
+            margin-top: 15px;
+            margin-left: 60px;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        .container div{
+            width: 44px;
+            height: 44px;
+            border: 0.1px solid rgba(95, 95, 95, 0);
+            display: block;
+            float: left;
+            border-radius: 2px;
+        }
+
+        .sideContainer{
+            width: 700px;
+            display: inline-block;
+            position: absolute;
+            margin-left: 40px;
+            margin-top: 200px;
+        }
+        .sideContainer h1{
+            color: beige;
+            text-align: center;
+            font-size: 70px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .sideContainer .startButton{
+            width: 300px;
+            height: 65px;
+            background-color: rgb(0, 0, 59);
+            color: beige;
+            border-radius: 50px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 45px;
+            text-align: center;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .sideContainer .startButton:hover{
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <!--
+        If we have to give the border for each cell in the snake board then use this line in the .container div style element
+            border: 0.1px solid rgba(95, 95, 95, 0.25);
+    -->
+
+    <div class="container">
+        <div id="box0n0n" style="background-color: rgba(0, 0, 59, 0.95);"></div>
+        <div id="box0n1n" style="background-color: rgba(0, 0, 59, 0.95); border-top-right-radius: 20px; border-bottom-right-radius: 20px;"></div>
+        <div id="box0n2n"></div>
+        <div id="box0n3n"></div>
+        <div id="box0n4n"></div>
+        <div id="box0n5n"></div>
+        <div id="box0n6n"></div>
+        <div id="box0n7n"></div>
+        <div id="box0n8n"></div>
+        <div id="box0n9n"></div>
+        <div id="box0n10"></div>
+        <div id="box0n11"></div>
+        <div id="box0n12"></div>
+        <div id="box0n13"></div>
+        <div id="box0n14"></div>
+        <div id="box0n15"></div>
+
+        <br>
+
+        <div id="box1n0n"></div>
+        <div id="box1n1n"></div>
+        <div id="box1n2n"></div>
+        <div id="box1n3n"></div>
+        <div id="box1n4n"></div>
+        <div id="box1n5n"></div>
+        <div id="box1n6n"></div>
+        <div id="box1n7n"></div>
+        <div id="box1n8n"></div>
+        <div id="box1n9n"></div>
+        <div id="box1n10"></div>
+        <div id="box1n11"></div>
+        <div id="box1n12"></div>
+        <div id="box1n13"></div>
+        <div id="box1n14"></div>
+        <div id="box1n15"></div>
+
+        <br>
+
+        <div id="box2n0n"></div>
+        <div id="box2n1n"></div>
+        <div id="box2n2n"></div>
+        <div id="box2n3n"></div>
+        <div id="box2n4n"></div>
+        <div id="box2n5n"></div>
+        <div id="box2n6n"></div>
+        <div id="box2n7n"></div>
+        <div id="box2n8n"></div>
+        <div id="box2n9n"></div>
+        <div id="box2n10"></div>
+        <div id="box2n11"></div>
+        <div id="box2n12"></div>
+        <div id="box2n13"></div>
+        <div id="box2n14"></div>
+        <div id="box2n15"></div>
+
+        <br>
+
+        <div id="box3n0n"></div>
+        <div id="box3n1n"></div>
+        <div id="box3n2n"></div>
+        <div id="box3n3n"></div>
+        <div id="box3n4n"></div>
+        <div id="box3n5n"></div>
+        <div id="box3n6n"></div>
+        <div id="box3n7n"></div>
+        <div id="box3n8n"></div>
+        <div id="box3n9n"></div>
+        <div id="box3n10"></div>
+        <div id="box3n11"></div>
+        <div id="box3n12"></div>
+        <div id="box3n13"></div>
+        <div id="box3n14"></div>
+        <div id="box3n15"></div>
+
+        <br>
+
+        <div id="box4n0n"></div>
+        <div id="box4n1n"></div>
+        <div id="box4n2n"></div>
+        <div id="box4n3n"></div>
+        <div id="box4n4n"></div>
+        <div id="box4n5n"></div>
+        <div id="box4n6n"></div>
+        <div id="box4n7n"></div>
+        <div id="box4n8n"></div>
+        <div id="box4n9n"></div>
+        <div id="box4n10"></div>
+        <div id="box4n11"></div>
+        <div id="box4n12"></div>
+        <div id="box4n13"></div>
+        <div id="box4n14"></div>
+        <div id="box4n15"></div>
+
+        <br>
+
+        <div id="box5n0n"></div>
+        <div id="box5n1n"></div>
+        <div id="box5n2n"></div>
+        <div id="box5n3n"></div>
+        <div id="box5n4n"></div>
+        <div id="box5n5n"></div>
+        <div id="box5n6n"></div>
+        <div id="box5n7n"></div>
+        <div id="box5n8n"></div>
+        <div id="box5n9n"></div>
+        <div id="box5n10"></div>
+        <div id="box5n11"></div>
+        <div id="box5n12"></div>
+        <div id="box5n13"></div>
+        <div id="box5n14"></div>
+        <div id="box5n15"></div>
+
+        <br>
+
+        <div id="box6n0n"></div>
+        <div id="box6n1n"></div>
+        <div id="box6n2n"></div>
+        <div id="box6n3n"></div>
+        <div id="box6n4n"></div>
+        <div id="box6n5n"></div>
+        <div id="box6n6n"></div>
+        <div id="box6n7n"></div>
+        <div id="box6n8n"></div>
+        <div id="box6n9n"></div>
+        <div id="box6n10"></div>
+        <div id="box6n11"></div>
+        <div id="box6n12"></div>
+        <div id="box6n13"></div>
+        <div id="box6n14"></div>
+        <div id="box6n15"></div>
+
+        <br>
+
+        <div id="box7n0n"></div>
+        <div id="box7n1n"></div>
+        <div id="box7n2n"></div>
+        <div id="box7n3n"></div>
+        <div id="box7n4n"></div>
+        <div id="box7n5n"></div>
+        <div id="box7n6n"></div>
+        <div id="box7n7n"></div>
+        <div id="box7n8n"></div>
+        <div id="box7n9n"></div>
+        <div id="box7n10"></div>
+        <div id="box7n11"></div>
+        <div id="box7n12"></div>
+        <div id="box7n13"></div>
+        <div id="box7n14"></div>
+        <div id="box7n15"></div>
+
+        <br>
+
+        <div id="box8n0n"></div>
+        <div id="box8n1n"></div>
+        <div id="box8n2n"></div>
+        <div id="box8n3n"></div>
+        <div id="box8n4n"></div>
+        <div id="box8n5n"></div>
+        <div id="box8n6n"></div>
+        <div id="box8n7n"></div>
+        <div id="box8n8n"></div>
+        <div id="box8n9n"></div>
+        <div id="box8n10"></div>
+        <div id="box8n11"></div>
+        <div id="box8n12"></div>
+        <div id="box8n13"></div>
+        <div id="box8n14"></div>
+        <div id="box8n15"></div>
+
+        <br>
+
+        <div id="box9n0n"></div>
+        <div id="box9n1n"></div>
+        <div id="box9n2n"></div>
+        <div id="box9n3n"></div>
+        <div id="box9n4n"></div>
+        <div id="box9n5n"></div>
+        <div id="box9n6n"></div>
+        <div id="box9n7n"></div>
+        <div id="box9n8n"></div>
+        <div id="box9n9n"></div>
+        <div id="box9n10"></div>
+        <div id="box9n11"></div>
+        <div id="box9n12"></div>
+        <div id="box9n13"></div>
+        <div id="box9n14"></div>
+        <div id="box9n15"></div>
+
+        <br>
+
+        <div id="box100n"></div>
+        <div id="box101n"></div>
+        <div id="box102n"></div>
+        <div id="box103n"></div>
+        <div id="box104n"></div>
+        <div id="box105n"></div>
+        <div id="box106n"></div>
+        <div id="box107n"></div>
+        <div id="box108n"></div>
+        <div id="box109n"></div>
+        <div id="box1010"></div>
+        <div id="box1011"></div>
+        <div id="box1012"></div>
+        <div id="box1013"></div>
+        <div id="box1014"></div>
+        <div id="box1015"></div>
+
+        <br>
+
+        <div id="box110n"></div>
+        <div id="box111n"></div>
+        <div id="box112n"></div>
+        <div id="box113n"></div>
+        <div id="box114n"></div>
+        <div id="box115n"></div>
+        <div id="box116n"></div>
+        <div id="box117n"></div>
+        <div id="box118n"></div>
+        <div id="box119n"></div>
+        <div id="box1110"></div>
+        <div id="box1111"></div>
+        <div id="box1112"></div>
+        <div id="box1113"></div>
+        <div id="box1114"></div>
+        <div id="box1115"></div>
+
+        <br>
+
+        <div id="box120n"></div>
+        <div id="box121n"></div>
+        <div id="box122n"></div>
+        <div id="box123n"></div>
+        <div id="box124n"></div>
+        <div id="box125n"></div>
+        <div id="box126n"></div>
+        <div id="box127n"></div>
+        <div id="box128n"></div>
+        <div id="box129n"></div>
+        <div id="box1210"></div>
+        <div id="box1211"></div>
+        <div id="box1212"></div>
+        <div id="box1213"></div>
+        <div id="box1214"></div>
+        <div id="box1215"></div>
+
+        <br>
+
+        <div id="box130n"></div>
+        <div id="box131n"></div>
+        <div id="box132n"></div>
+        <div id="box133n"></div>
+        <div id="box134n"></div>
+        <div id="box135n"></div>
+        <div id="box136n"></div>
+        <div id="box137n"></div>
+        <div id="box138n"></div>
+        <div id="box139n"></div>
+        <div id="box1310"></div>
+        <div id="box1311"></div>
+        <div id="box1312"></div>
+        <div id="box1313"></div>
+        <div id="box1314"></div>
+        <div id="box1315"></div>
+
+        <br>
+
+        <div id="box140n"></div>
+        <div id="box141n"></div>
+        <div id="box142n"></div>
+        <div id="box143n"></div>
+        <div id="box144n"></div>
+        <div id="box145n"></div>
+        <div id="box146n"></div>
+        <div id="box147n"></div>
+        <div id="box148n"></div>
+        <div id="box149n"></div>
+        <div id="box1410"></div>
+        <div id="box1411"></div>
+        <div id="box1412"></div>
+        <div id="box1413"></div>
+        <div id="box1414"></div>
+        <div id="box1415"></div>
+
+        <br>
+
+        <div id="box150n"></div>
+        <div id="box151n"></div>
+        <div id="box152n"></div>
+        <div id="box153n"></div>
+        <div id="box154n"></div>
+        <div id="box155n"></div>
+        <div id="box156n"></div>
+        <div id="box157n"></div>
+        <div id="box158n"></div>
+        <div id="box159n"></div>
+        <div id="box1510"></div>
+        <div id="box1511"></div>
+        <div id="box1512"></div>
+        <div id="box1513"></div>
+        <div id="box1514"></div>
+        <div id="box1515"></div>
+
+    </div>
+
+    <div class="sideContainer">
+        <h1>SNAKE GAME</h1>
+        <div class="startButton" id="startButtonId" onclick="play()">START</div>
+    </div>
+
+    <script src="script/snakeJS.js"></script>
+</body>
+</html>
